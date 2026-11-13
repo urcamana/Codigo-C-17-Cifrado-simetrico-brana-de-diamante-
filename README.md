@@ -60,3 +60,4 @@ Licencia
 Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0).
 Uso comercial, integración en software propietario o empleo por entidades gubernamentales/industriales requiere autorización del autor y convenio de transferencia tecnológica.
 
+miniz.c / miniz.h — biblioteca de terceros (ver cabecera del archivo).
