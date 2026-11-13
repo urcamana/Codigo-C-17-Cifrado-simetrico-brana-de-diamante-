@@ -27,7 +27,9 @@ Ancho configurable (frente a techos fijos de AES / ChaCha20)
 AES opera con bloque de 128 bit y clave de hasta 256 bit. ChaCha20 usa clave de 256 bit. Brana V6.0 permite fijar en compilación del encriptador un ancho de sesión BRANA_BITS (mínimo 256, múltiplo de 32; p. ej. 512, 1024, 2048, … hasta límites prácticos de memoria/CPU). Ese valor se escribe en el contenedor; el desencriptador lo lee y opera de forma universal.
 Esto no sustituye una evaluación criptográfica independiente: el ancho ampliado es una propiedad de diseño e implementación, no una certificación de mayor seguridad que AES-256 o ChaCha20.
 
-Tabla orientativa de implementación (ejemplo)
+-----------------------------------------------
+Tabla orientativa de implementación (ejemplo):
+-----------------------------------------------
 
 BRANA_BITS 	-	Clave / bloque F (aprox.)-	Uso orientativo 			-	Hardware orientativo:
 
@@ -44,6 +46,7 @@ BRANA_BITS 	-	Clave / bloque F (aprox.)-	Uso orientativo 			-	Hardware orientati
 
 65536		- 	8 KB			 -	Solo experimentación / lab		-	Mucha RAM; el I/O suele dominar
 
+-----------------------------------------------
 
 Notas: el tamaño de lectura por hilo del ovillo (Tam_Bloque_Hilo, p. ej. 1 / 2 / 4 MB) es independiente de BRANA_BITS. En equipos modestos conviene 256 + 1 MB/hilo. Subir bits aumenta trabajo de F; en discos lentos o con .ov el tiempo total puede no crecer en la misma proporción.
 
