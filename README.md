@@ -30,12 +30,20 @@ Esto no sustituye una evaluación criptográfica independiente: el ancho ampliad
 Tabla orientativa de implementación (ejemplo)
 
 BRANA_BITS 	-	Clave / bloque F (aprox.)-	Uso orientativo 			-	Hardware orientativo:
+
+
 256 (default)	-	32 B			 -	Uso general, notebooks			-	4–8 GB RAM, dual/quad core
+
 512		-	64 B			 -	Escritorio / más margen de estado	-	8–16 GB, 4+ núcleos
+
 1024		-	128 B			 -	Estación de trabajo			-	16 GB+, CPU moderna
+
 2048		-	256 B			 -	Servidor / política “ancho alto”	-	16–32 GB, buen single-thread
+
 4096–16384	-	0,5–2 KB		 -	Pruebas / políticas extremas		-	32 GB+, paciencia de CPU
+
 65536		- 	8 KB			 -	Solo experimentación / lab		-	Mucha RAM; el I/O suele dominar
+
 
 Notas: el tamaño de lectura por hilo del ovillo (Tam_Bloque_Hilo, p. ej. 1 / 2 / 4 MB) es independiente de BRANA_BITS. En equipos modestos conviene 256 + 1 MB/hilo. Subir bits aumenta trabajo de F; en discos lentos o con .ov el tiempo total puede no crecer en la misma proporción.
 
