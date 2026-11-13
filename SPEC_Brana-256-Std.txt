@@ -1,0 +1,44 @@
+PERFIL
+  BRANA_BITS = 256
+  K_master   = 32 bytes
+  bloque F   = 32 bytes
+  MAC tag    = 32 bytes (x2 en .brana: CT + plain)
+
+KDF  brana_kdf_ex(user, pass, salt[16], profile, out, 32)
+  profile 0=FAST  1=NORMAL  2=HIGH
+
+F    brana_v5_flow_xor_rt(out, in, len, K, 32, nonce[16], 16, block, 256)
+  cifrado = claro XOR keystream   (enc = des)
+
+MAC  brana_mac(K[32], msg, len, tag[32])
+  dominios: plain=0  ct=1
+
+.BRANA (orden de escritura, V6.0)
+  1) header: hSize + hBuf + Control_Semilla + CRC_Control
+  2) cuerpo: F luego ovillo (-m); opcional defensa
+  3) faro: Ancla + N_inicial + Fatiga + registro[1024]
+  4) MAC: tag_ct[32] + tag_plain[32]
+  5) basura (inicio fijo):
+       [0..15] salt
+       [16]    profile
+       [17..24] senuelo
+       [25..40] nonce
+       [41..44] bits u32 LE
+       [45..46] magic B1 54
+
+FUERA DE STD (no exigir interoperar)
+  -S BRANAS1 | -DB BRANAF1 | bits!=256 | bulk/ov
+
+CODIGO DE REFERENCIA
+  fuentes V6.0: wide/brana_kdf.c  wide/brana_v5_flow.c  wide/brana_mac.c
+                wide/brana_config.h  encriptador.cpp  desencriptador.cpp
+
+VECTOR nucleo (bits=256, profile=0)
+  user=vector_user
+  pass=VectorPass1!
+  salt=000102030405060708090a0b0c0d0e0f
+  nonce=101112131415161718191a1b1c1d1e1f
+  plain=000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  K_master=650fe95fed3cfff1543dc27fd0dc4877047115df358ba0b0b7a00e4027c3ab17
+  ct=1620e8e25107928b6d5ef5985fb86d66fd54fb4b80e00d03cf761b90e4d53800
+  (F otra vez sobre ct recupera plain)

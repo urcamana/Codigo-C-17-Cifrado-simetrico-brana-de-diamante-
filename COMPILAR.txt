@@ -1,0 +1,27 @@
+Brana de Diamante V6.0 — compilacion
+====================================
+
+Requisito: MSYS2 UCRT64 (g++), Windows.
+
+Ancho institucional (SOLO encriptador):
+  -DBRANA_BITS=256
+  (cambiar a 512, 2048, 65536, etc. si la entidad lo define)
+
+--- Encriptador (una linea) ---
+
+g++ -I. -DBRANA_BITS=256 encriptador.cpp util/brana_util.cpp container/brana_container.cpp crypto/brana_crypto.cpp wide/brana_wide.c wide/brana_dual.c wide/brana_stream.c wide/brana_v5_flow.c wide/brana_kdf.c wide/brana_mac.c wide/brana_random.c -std=c++17 -x c miniz.c -x none -o encriptador.exe -O3 -pthread -Wno-strict-aliasing -lbcrypt -s -fno-ident -Wl,--strip-all
+
+Con ruta MSYS2 completa:
+
+C:\msys64\ucrt64\bin\g++.exe -I. -DBRANA_BITS=256 encriptador.cpp util/brana_util.cpp container/brana_container.cpp crypto/brana_crypto.cpp wide/brana_wide.c wide/brana_dual.c wide/brana_stream.c wide/brana_v5_flow.c wide/brana_kdf.c wide/brana_mac.c wide/brana_random.c -std=c++17 -x c miniz.c -x none -o encriptador.exe -O3 -pthread -Wno-strict-aliasing -lbcrypt -s -fno-ident -Wl,--strip-all
+
+--- Desencriptador (una linea; SIN -DBRANA_BITS) ---
+
+g++ -I. desencriptador.cpp util/brana_util.cpp container/brana_container.cpp crypto/brana_crypto.cpp wide/brana_wide.c wide/brana_dual.c wide/brana_stream.c wide/brana_v5_flow.c wide/brana_kdf.c wide/brana_mac.c wide/brana_random.c -std=c++17 -x c miniz.c -x none -o desencriptador.exe -O3 -pthread -Wno-strict-aliasing -lbcrypt -s -fno-ident -Wl,--strip-all
+
+Con ruta MSYS2 completa:
+
+C:\msys64\ucrt64\bin\g++.exe -I. desencriptador.cpp util/brana_util.cpp container/brana_container.cpp crypto/brana_crypto.cpp wide/brana_wide.c wide/brana_dual.c wide/brana_stream.c wide/brana_v5_flow.c wide/brana_kdf.c wide/brana_mac.c wide/brana_random.c -std=c++17 -x c miniz.c -x none -o desencriptador.exe -O3 -pthread -Wno-strict-aliasing -lbcrypt -s -fno-ident -Wl,--strip-all
+
+VS Code / Cursor: copiar tasks.json y ajustar cwd a la carpeta del proyecto (brana_v60).
+Ctrl+Shift+B compila ambos.
