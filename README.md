@@ -56,6 +56,9 @@ Convocatoria a revisión
 Se publica el código para uso personal, académico e investigación bajo la licencia indicada, con el objetivo explícito de que terceros y la comunidad revisen el diseño, la implementación y las pruebas. No se afirma equivalencia de seguridad con AES-256/ChaCha20 ni madurez de producto industrial hasta esa revisión.
 
 
+
+Autor: Claudio Luis Manassero (ORCID: 0009-0009-6184-7858)
+
 Licencia
 Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0).
 Uso comercial, integración en software propietario o empleo por entidades gubernamentales/industriales requiere autorización del autor y convenio de transferencia tecnológica.
